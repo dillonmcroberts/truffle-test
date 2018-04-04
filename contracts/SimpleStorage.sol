@@ -32,14 +32,15 @@ contract SimpleStorage {
       // adds a new item into the system, not checked out, not 'trashed'
       // do we need an external AND internal ID for the item?
         items[itemCounter] = Item(itemCounter, _itemName, _itemType, false, false, address(this));
+        itemIds.push(itemCounter);
         itemCounter++;
     }
 
     function checkOut(uint _itemId) public {
-        Item storage item = items[_itemId];
-        require(item.owner == address(this));
+        // Item storage item = items[_itemId];
+        require(items[_itemId].owner == address(this));
         // function will return out if above statement evaluates to false
-        item.owner = msg.sender;
+        items[_itemId].owner = msg.sender;
     }
 
     function checkIn() public {
