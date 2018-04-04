@@ -30,18 +30,18 @@
       "type": "function"
     }
   ],
-  "bytecode": "0x6060604052341561000f57600080fd5b60d38061001d6000396000f3006060604052600436106049576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806360fe47b114604e5780636d4ce63c14606e575b600080fd5b3415605857600080fd5b606c60048080359060200190919050506094565b005b3415607857600080fd5b607e609e565b6040518082815260200191505060405180910390f35b8060008190555050565b600080549050905600a165627a7a72305820a401bc7a50423685a3395d0c146e4d078e6e546885c729f02f41fc7bc232bf680029",
-  "deployedBytecode": "0x6060604052600436106049576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806360fe47b114604e5780636d4ce63c14606e575b600080fd5b3415605857600080fd5b606c60048080359060200190919050506094565b005b3415607857600080fd5b607e609e565b6040518082815260200191505060405180910390f35b8060008190555050565b600080549050905600a165627a7a72305820a401bc7a50423685a3395d0c146e4d078e6e546885c729f02f41fc7bc232bf680029",
-  "sourceMap": "26:176:1:-;;;;;;;;;;;;;;;;;",
-  "deployedSourceMap": "26:176:1:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;73:53;;;;;;;;;;;;;;;;;;;;;;;;;;130:70;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;73:53;120:1;107:10;:14;;;;73:53;:::o;130:70::-;166:4;185:10;;178:17;;130:70;:::o",
-  "source": "pragma solidity ^0.4.18;\n\ncontract SimpleStorage {\n  uint storedData;\n\n  function set(uint x) public {\n    storedData = x;\n  }\n\n  function get() public view returns (uint) {\n    return storedData;\n  }\n}\n",
+  "bytecode": "0x6060604052341561000f57600080fd5b6102248061001e6000396000f30060606040526004361061004c576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806360fe47b1146100515780636d4ce63c14610074575b600080fd5b341561005c57600080fd5b610072600480803590602001909190505061009d565b005b341561007f57600080fd5b6100876101aa565b6040518082815260200191505060405180910390f35b600060408051908101604052803373ffffffffffffffffffffffffffffffffffffffff16815260200160008152506000803373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060008201518160000160006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550602082015181600101559050506000803373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002090508181600101819055505050565b6000806000803373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002090508060010154915050905600a165627a7a72305820f7661ddd978ee3265891327dfa4891dbc62ef82a2844200f98fa6de94c6908100029",
+  "deployedBytecode": "0x60606040526004361061004c576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806360fe47b1146100515780636d4ce63c14610074575b600080fd5b341561005c57600080fd5b610072600480803590602001909190505061009d565b005b341561007f57600080fd5b6100876101aa565b6040518082815260200191505060405180910390f35b600060408051908101604052803373ffffffffffffffffffffffffffffffffffffffff16815260200160008152506000803373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060008201518160000160006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550602082015181600101559050506000803373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002090508181600101819055505050565b6000806000803373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002090508060010154915050905600a165627a7a72305820f7661ddd978ee3265891327dfa4891dbc62ef82a2844200f98fa6de94c6908100029",
+  "sourceMap": "26:600:0:-;;;;;;;;;;;;;;;;;",
+  "deployedSourceMap": "26:600:0:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;345:155;;;;;;;;;;;;;;;;;;;;;;;;;;506:118;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;345:155;437:14;403:19;;;;;;;;;408:10;403:19;;;;;;420:1;403:19;;;383:5;:17;389:10;383:17;;;;;;;;;;;;;;;:39;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;454:5;:17;460:10;454:17;;;;;;;;;;;;;;;437:34;;492:1;481;:8;;:12;;;;345:155;;:::o;506:118::-;542:4;558:14;575:5;:17;581:10;575:17;;;;;;;;;;;;;;;558:34;;609:1;:8;;;602:15;;506:118;;:::o",
+  "source": "pragma solidity ^0.4.18;\n\ncontract SimpleStorage {\n    struct User {\n        address addr;\n        uint number;\n        // Item[] ownedItems;\n    }\n\n    struct Item {\n        uint id;\n        string itemType;\n        bool checkedOut;\n        bool trashed;\n    }\n\n    mapping (address => User) users;\n\n  // function SimpleStorage() {\n  // }\n\n    function set(uint x) public {\n        users[msg.sender] = User(msg.sender, 0);\n    \n        User storage u = users[msg.sender];\n        u.number = x;\n    }\n\n    function get() public view returns (uint) {\n        User storage u = users[msg.sender];\n        return u.number;\n    }\n}\n",
   "sourcePath": "/Users/dillon/Development/giantmachines/corsair/react-box/contracts/SimpleStorage.sol",
   "ast": {
     "attributes": {
       "absolutePath": "/Users/dillon/Development/giantmachines/corsair/react-box/contracts/SimpleStorage.sol",
       "exportedSymbols": {
         "SimpleStorage": [
-          79
+          66
         ]
       }
     },
@@ -55,9 +55,9 @@
             ".18"
           ]
         },
-        "id": 58,
+        "id": 1,
         "name": "PragmaDirective",
-        "src": "0:24:1"
+        "src": "0:24:0"
       },
       {
         "attributes": {
@@ -71,37 +71,209 @@
           "documentation": null,
           "fullyImplemented": true,
           "linearizedBaseContracts": [
-            79
+            66
           ],
           "name": "SimpleStorage",
-          "scope": 80
+          "scope": 67
         },
         "children": [
           {
             "attributes": {
-              "constant": false,
-              "name": "storedData",
-              "scope": 79,
-              "stateVariable": true,
-              "storageLocation": "default",
-              "type": "uint256",
-              "value": null,
-              "visibility": "internal"
+              "canonicalName": "SimpleStorage.User",
+              "name": "User",
+              "scope": 66,
+              "visibility": "public"
             },
             "children": [
               {
                 "attributes": {
-                  "name": "uint",
-                  "type": "uint256"
+                  "constant": false,
+                  "name": "addr",
+                  "scope": 6,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "address",
+                  "value": null,
+                  "visibility": "internal"
                 },
-                "id": 59,
-                "name": "ElementaryTypeName",
-                "src": "53:4:1"
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "address",
+                      "type": "address"
+                    },
+                    "id": 2,
+                    "name": "ElementaryTypeName",
+                    "src": "77:7:0"
+                  }
+                ],
+                "id": 3,
+                "name": "VariableDeclaration",
+                "src": "77:12:0"
+              },
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "number",
+                  "scope": 6,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "uint256",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "uint",
+                      "type": "uint256"
+                    },
+                    "id": 4,
+                    "name": "ElementaryTypeName",
+                    "src": "99:4:0"
+                  }
+                ],
+                "id": 5,
+                "name": "VariableDeclaration",
+                "src": "99:11:0"
               }
             ],
-            "id": 60,
-            "name": "VariableDeclaration",
-            "src": "53:15:1"
+            "id": 6,
+            "name": "StructDefinition",
+            "src": "55:92:0"
+          },
+          {
+            "attributes": {
+              "constant": false,
+              "name": "Item",
+              "scope": 66,
+              "stateVariable": true,
+              "storageLocation": "default",
+              "type": "mapping(address => struct SimpleStorage.User storage ref)",
+              "value": null,
+              "visibility": "public",
+              "canonicalName": "SimpleStorage.Item"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "type": "uint256",
+                  "constant": false,
+                  "name": "id",
+                  "scope": 15,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "uint",
+                      "type": "uint256"
+                    },
+                    "id": 7,
+                    "name": "ElementaryTypeName",
+                    "src": "175:4:0"
+                  },
+                  {
+                    "attributes": {
+                      "contractScope": null,
+                      "name": "User",
+                      "referencedDeclaration": 6,
+                      "type": "struct SimpleStorage.User storage pointer"
+                    },
+                    "id": 8,
+                    "name": "UserDefinedTypeName",
+                    "src": "129:4:0"
+                  }
+                ],
+                "id": 8,
+                "name": "VariableDeclaration",
+                "src": "175:7:0"
+              },
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "itemType",
+                  "scope": 15,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "string storage pointer",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "string",
+                      "type": "string storage pointer"
+                    },
+                    "id": 9,
+                    "name": "ElementaryTypeName",
+                    "src": "192:6:0"
+                  }
+                ],
+                "id": 10,
+                "name": "VariableDeclaration",
+                "src": "192:15:0"
+              },
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "checkedOut",
+                  "scope": 15,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "bool",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "bool",
+                      "type": "bool"
+                    },
+                    "id": 11,
+                    "name": "ElementaryTypeName",
+                    "src": "217:4:0"
+                  }
+                ],
+                "id": 12,
+                "name": "VariableDeclaration",
+                "src": "217:15:0"
+              },
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "trashed",
+                  "scope": 15,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "bool",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "bool",
+                      "type": "bool"
+                    },
+                    "id": 13,
+                    "name": "ElementaryTypeName",
+                    "src": "242:4:0"
+                  }
+                ],
+                "id": 14,
+                "name": "VariableDeclaration",
+                "src": "242:12:0"
+              }
+            ],
+            "id": 15,
+            "name": "StructDefinition",
+            "src": "153:108:0"
           },
           {
             "attributes": {
@@ -111,12 +283,16 @@
               "modifiers": [
                 null
               ],
-              "name": "set",
+              "name": "users",
               "payable": false,
-              "scope": 79,
+              "scope": 66,
               "stateMutability": "nonpayable",
               "superFunction": null,
-              "visibility": "public"
+              "visibility": "internal",
+              "stateVariable": true,
+              "storageLocation": "default",
+              "type": "mapping(address => struct SimpleStorage.User storage ref)",
+              "value": null
             },
             "children": [
               {
@@ -124,11 +300,11 @@
                   {
                     "attributes": {
                       "constant": false,
-                      "name": "x",
-                      "scope": 70,
+                      "name": "address",
+                      "scope": 40,
                       "stateVariable": false,
                       "storageLocation": "default",
-                      "type": "uint256",
+                      "type": "address",
                       "value": null,
                       "visibility": "internal"
                     },
@@ -138,19 +314,33 @@
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 61,
+                        "id": 11,
                         "name": "ElementaryTypeName",
-                        "src": "86:4:1"
+                        "src": "198:4:0"
                       }
                     ],
-                    "id": 62,
-                    "name": "VariableDeclaration",
-                    "src": "86:6:1"
+                    "id": 16,
+                    "name": "ElementaryTypeName",
+                    "src": "276:7:0"
+                  },
+                  {
+                    "attributes": {
+                      "contractScope": null,
+                      "name": "User",
+                      "referencedDeclaration": 6,
+                      "type": "struct SimpleStorage.User storage pointer"
+                    },
+                    "id": 17,
+                    "name": "UserDefinedTypeName",
+                    "src": "287:4:0"
                   }
                 ],
-                "id": 63,
-                "name": "ParameterList",
-                "src": "85:8:1"
+                "id": 18,
+                "name": "Mapping",
+                "src": "267:25:0",
+                "attributes": {
+                  "type": "mapping(address => struct SimpleStorage.User storage ref)"
+                }
               },
               {
                 "attributes": {
@@ -159,12 +349,286 @@
                   ]
                 },
                 "children": [],
-                "id": 64,
+                "id": 14,
                 "name": "ParameterList",
-                "src": "101:0:1"
+                "src": "213:0:0"
               },
               {
                 "children": [
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": "=",
+                          "type": "struct SimpleStorage.User storage ref"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": true,
+                              "type": "struct SimpleStorage.User storage ref"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 10,
+                                  "type": "mapping(address => struct SimpleStorage.User storage ref)",
+                                  "value": "users"
+                                },
+                                "id": 15,
+                                "name": "Identifier",
+                                "src": "219:5:0"
+                              },
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "lValueRequested": false,
+                                  "member_name": "sender",
+                                  "referencedDeclaration": null,
+                                  "type": "address"
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 69,
+                                      "type": "msg",
+                                      "value": "msg"
+                                    },
+                                    "id": 16,
+                                    "name": "Identifier",
+                                    "src": "225:3:0"
+                                  }
+                                ],
+                                "id": 17,
+                                "name": "MemberAccess",
+                                "src": "225:10:0"
+                              }
+                            ],
+                            "id": 18,
+                            "name": "IndexAccess",
+                            "src": "219:17:0"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "isStructConstructorCall": true,
+                              "lValueRequested": false,
+                              "names": [
+                                null
+                              ],
+                              "type": "struct SimpleStorage.User memory",
+                              "type_conversion": false
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": [
+                                    {
+                                      "typeIdentifier": "t_address",
+                                      "typeString": "address"
+                                    },
+                                    {
+                                      "typeIdentifier": "t_rational_0_by_1",
+                                      "typeString": "int_const 0"
+                                    }
+                                  ],
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 6,
+                                  "type": "type(struct SimpleStorage.User storage pointer)",
+                                  "value": "User"
+                                },
+                                "id": 19,
+                                "name": "Identifier",
+                                "src": "239:4:0"
+                              },
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "lValueRequested": false,
+                                  "member_name": "sender",
+                                  "referencedDeclaration": null,
+                                  "type": "address"
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 69,
+                                      "type": "msg",
+                                      "value": "msg"
+                                    },
+                                    "id": 20,
+                                    "name": "Identifier",
+                                    "src": "244:3:0"
+                                  }
+                                ],
+                                "id": 21,
+                                "name": "MemberAccess",
+                                "src": "244:10:0"
+                              },
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "hexvalue": "30",
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": true,
+                                  "lValueRequested": false,
+                                  "subdenomination": null,
+                                  "token": "number",
+                                  "type": "int_const 0",
+                                  "value": "0"
+                                },
+                                "id": 22,
+                                "name": "Literal",
+                                "src": "256:1:0"
+                              }
+                            ],
+                            "id": 23,
+                            "name": "FunctionCall",
+                            "src": "239:19:0"
+                          }
+                        ],
+                        "id": 24,
+                        "name": "Assignment",
+                        "src": "219:39:0"
+                      }
+                    ],
+                    "id": 25,
+                    "name": "ExpressionStatement",
+                    "src": "219:39:0"
+                  },
+                  {
+                    "attributes": {
+                      "assignments": [
+                        27
+                      ]
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "constant": false,
+                          "name": "u",
+                          "scope": 40,
+                          "stateVariable": false,
+                          "storageLocation": "storage",
+                          "type": "struct SimpleStorage.User storage pointer",
+                          "value": null,
+                          "visibility": "internal"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "contractScope": null,
+                              "name": "User",
+                              "referencedDeclaration": 6,
+                              "type": "struct SimpleStorage.User storage pointer"
+                            },
+                            "id": 26,
+                            "name": "UserDefinedTypeName",
+                            "src": "269:4:0"
+                          }
+                        ],
+                        "id": 27,
+                        "name": "VariableDeclaration",
+                        "src": "269:14:0"
+                      },
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "type": "struct SimpleStorage.User storage ref"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 10,
+                              "type": "mapping(address => struct SimpleStorage.User storage ref)",
+                              "value": "users"
+                            },
+                            "id": 28,
+                            "name": "Identifier",
+                            "src": "286:5:0"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "member_name": "sender",
+                              "referencedDeclaration": null,
+                              "type": "address"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 69,
+                                  "type": "msg",
+                                  "value": "msg"
+                                },
+                                "id": 29,
+                                "name": "Identifier",
+                                "src": "292:3:0"
+                              }
+                            ],
+                            "id": 30,
+                            "name": "MemberAccess",
+                            "src": "292:10:0"
+                          }
+                        ],
+                        "id": 31,
+                        "name": "IndexAccess",
+                        "src": "286:17:0"
+                      }
+                    ],
+                    "id": 32,
+                    "name": "VariableDeclarationStatement",
+                    "src": "269:34:0"
+                  },
                   {
                     "children": [
                       {
@@ -181,16 +645,33 @@
                           {
                             "attributes": {
                               "argumentTypes": null,
-                              "overloadedDeclarations": [
-                                null
-                              ],
-                              "referencedDeclaration": 60,
-                              "type": "uint256",
-                              "value": "storedData"
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": true,
+                              "member_name": "number",
+                              "referencedDeclaration": 5,
+                              "type": "uint256"
                             },
-                            "id": 65,
-                            "name": "Identifier",
-                            "src": "107:10:1"
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 27,
+                                  "type": "struct SimpleStorage.User storage pointer",
+                                  "value": "u"
+                                },
+                                "id": 33,
+                                "name": "Identifier",
+                                "src": "309:1:0"
+                              }
+                            ],
+                            "id": 35,
+                            "name": "MemberAccess",
+                            "src": "309:8:0"
                           },
                           {
                             "attributes": {
@@ -198,46 +679,46 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 62,
+                              "referencedDeclaration": 12,
                               "type": "uint256",
                               "value": "x"
                             },
-                            "id": 66,
+                            "id": 36,
                             "name": "Identifier",
-                            "src": "120:1:1"
+                            "src": "320:1:0"
                           }
                         ],
-                        "id": 67,
+                        "id": 37,
                         "name": "Assignment",
-                        "src": "107:14:1"
+                        "src": "309:12:0"
                       }
                     ],
-                    "id": 68,
+                    "id": 38,
                     "name": "ExpressionStatement",
-                    "src": "107:14:1"
+                    "src": "309:12:0"
                   }
                 ],
-                "id": 69,
+                "id": 39,
                 "name": "Block",
-                "src": "101:25:1"
+                "src": "213:113:0"
               }
             ],
-            "id": 70,
-            "name": "FunctionDefinition",
-            "src": "73:53:1"
+            "id": 19,
+            "name": "VariableDeclaration",
+            "src": "267:31:0"
           },
           {
             "attributes": {
-              "constant": true,
+              "constant": false,
               "implemented": true,
               "isConstructor": false,
               "modifiers": [
                 null
               ],
-              "name": "get",
+              "name": "set",
               "payable": false,
-              "scope": 79,
-              "stateMutability": "view",
+              "scope": 66,
+              "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
             },
@@ -248,18 +729,12 @@
                     null
                   ]
                 },
-                "children": [],
-                "id": 71,
-                "name": "ParameterList",
-                "src": "142:2:1"
-              },
-              {
                 "children": [
                   {
                     "attributes": {
                       "constant": false,
-                      "name": "",
-                      "scope": 78,
+                      "name": "x",
+                      "scope": 49,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -272,65 +747,725 @@
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 72,
+                        "id": 20,
                         "name": "ElementaryTypeName",
-                        "src": "166:4:1"
+                        "src": "358:4:0"
                       }
                     ],
-                    "id": 73,
+                    "id": 21,
                     "name": "VariableDeclaration",
-                    "src": "166:4:1"
+                    "src": "358:6:0"
                   }
                 ],
-                "id": 74,
+                "id": 22,
                 "name": "ParameterList",
-                "src": "165:6:1"
+                "src": "357:8:0"
               },
               {
                 "children": [
                   {
                     "attributes": {
-                      "functionReturnParameters": 74
+                      "constant": false,
+                      "name": "",
+                      "scope": 56,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint",
+                          "type": "uint256"
+                        },
+                        "id": 42,
+                        "name": "ElementaryTypeName",
+                        "src": "366:4:0"
+                      }
+                    ],
+                    "id": 43,
+                    "name": "VariableDeclaration",
+                    "src": "366:4:0"
+                  }
+                ],
+                "id": 23,
+                "name": "ParameterList",
+                "src": "373:0:0",
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                }
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "assignments": [
+                        46
+                      ]
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "constant": false,
+                          "name": "u",
+                          "scope": 56,
+                          "stateVariable": false,
+                          "storageLocation": "storage",
+                          "type": "struct SimpleStorage.User storage ref",
+                          "value": null,
+                          "visibility": "internal",
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": "="
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "contractScope": null,
+                              "name": "User",
+                              "referencedDeclaration": 6,
+                              "type": "struct SimpleStorage.User storage ref",
+                              "argumentTypes": null,
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": true
+                            },
+                            "id": 27,
+                            "name": "IndexAccess",
+                            "src": "383:17:0",
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 19,
+                                  "type": "mapping(address => struct SimpleStorage.User storage ref)",
+                                  "value": "users"
+                                },
+                                "id": 24,
+                                "name": "Identifier",
+                                "src": "383:5:0"
+                              },
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "lValueRequested": false,
+                                  "member_name": "sender",
+                                  "referencedDeclaration": null,
+                                  "type": "address"
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 78,
+                                      "type": "msg",
+                                      "value": "msg"
+                                    },
+                                    "id": 25,
+                                    "name": "Identifier",
+                                    "src": "389:3:0"
+                                  }
+                                ],
+                                "id": 26,
+                                "name": "MemberAccess",
+                                "src": "389:10:0"
+                              }
+                            ]
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "isStructConstructorCall": true,
+                              "lValueRequested": false,
+                              "names": [
+                                null
+                              ],
+                              "type": "struct SimpleStorage.User memory",
+                              "type_conversion": false
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": [
+                                    {
+                                      "typeIdentifier": "t_address",
+                                      "typeString": "address"
+                                    },
+                                    {
+                                      "typeIdentifier": "t_rational_0_by_1",
+                                      "typeString": "int_const 0"
+                                    }
+                                  ],
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 6,
+                                  "type": "type(struct SimpleStorage.User storage pointer)",
+                                  "value": "User"
+                                },
+                                "id": 28,
+                                "name": "Identifier",
+                                "src": "403:4:0"
+                              },
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "lValueRequested": false,
+                                  "member_name": "sender",
+                                  "referencedDeclaration": null,
+                                  "type": "address"
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 78,
+                                      "type": "msg",
+                                      "value": "msg"
+                                    },
+                                    "id": 29,
+                                    "name": "Identifier",
+                                    "src": "408:3:0"
+                                  }
+                                ],
+                                "id": 30,
+                                "name": "MemberAccess",
+                                "src": "408:10:0"
+                              },
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "hexvalue": "30",
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": true,
+                                  "lValueRequested": false,
+                                  "subdenomination": null,
+                                  "token": "number",
+                                  "type": "int_const 0",
+                                  "value": "0"
+                                },
+                                "id": 31,
+                                "name": "Literal",
+                                "src": "420:1:0"
+                              }
+                            ],
+                            "id": 32,
+                            "name": "FunctionCall",
+                            "src": "403:19:0"
+                          }
+                        ],
+                        "id": 33,
+                        "name": "Assignment",
+                        "src": "383:39:0"
+                      },
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "type": "struct SimpleStorage.User storage ref"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 10,
+                              "type": "mapping(address => struct SimpleStorage.User storage ref)",
+                              "value": "users"
+                            },
+                            "id": 47,
+                            "name": "Identifier",
+                            "src": "395:5:0"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "member_name": "sender",
+                              "referencedDeclaration": null,
+                              "type": "address"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 69,
+                                  "type": "msg",
+                                  "value": "msg"
+                                },
+                                "id": 48,
+                                "name": "Identifier",
+                                "src": "401:3:0"
+                              }
+                            ],
+                            "id": 49,
+                            "name": "MemberAccess",
+                            "src": "401:10:0"
+                          }
+                        ],
+                        "id": 50,
+                        "name": "IndexAccess",
+                        "src": "395:17:0"
+                      }
+                    ],
+                    "id": 34,
+                    "name": "ExpressionStatement",
+                    "src": "383:39:0"
+                  },
+                  {
+                    "attributes": {
+                      "functionReturnParameters": 44,
+                      "assignments": [
+                        36
+                      ]
                     },
                     "children": [
                       {
                         "attributes": {
                           "argumentTypes": null,
-                          "overloadedDeclarations": [
-                            null
-                          ],
-                          "referencedDeclaration": 60,
-                          "type": "uint256",
-                          "value": "storedData"
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "member_name": "number",
+                          "referencedDeclaration": 5,
+                          "type": "struct SimpleStorage.User storage pointer",
+                          "hexvalue": "3130",
+                          "subdenomination": null,
+                          "token": "number",
+                          "value": null,
+                          "constant": false,
+                          "name": "u",
+                          "scope": 49,
+                          "stateVariable": false,
+                          "storageLocation": "storage",
+                          "visibility": "internal"
                         },
-                        "id": 75,
-                        "name": "Identifier",
-                        "src": "185:10:1"
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 6,
+                              "type": "struct SimpleStorage.User storage pointer",
+                              "value": "u",
+                              "contractScope": null,
+                              "name": "User"
+                            },
+                            "id": 35,
+                            "name": "UserDefinedTypeName",
+                            "src": "437:4:0"
+                          }
+                        ],
+                        "id": 36,
+                        "name": "VariableDeclaration",
+                        "src": "437:14:0"
+                      },
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "type": "struct SimpleStorage.User storage ref"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 19,
+                              "type": "mapping(address => struct SimpleStorage.User storage ref)",
+                              "value": "users"
+                            },
+                            "id": 37,
+                            "name": "Identifier",
+                            "src": "454:5:0"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "member_name": "sender",
+                              "referencedDeclaration": null,
+                              "type": "address"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 78,
+                                  "type": "msg",
+                                  "value": "msg"
+                                },
+                                "id": 38,
+                                "name": "Identifier",
+                                "src": "460:3:0"
+                              }
+                            ],
+                            "id": 39,
+                            "name": "MemberAccess",
+                            "src": "460:10:0"
+                          }
+                        ],
+                        "id": 40,
+                        "name": "IndexAccess",
+                        "src": "454:17:0"
                       }
                     ],
-                    "id": 76,
-                    "name": "Return",
-                    "src": "178:17:1"
+                    "id": 41,
+                    "name": "VariableDeclarationStatement",
+                    "src": "437:34:0"
+                  },
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": "=",
+                          "type": "uint256"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": true,
+                              "member_name": "number",
+                              "referencedDeclaration": 5,
+                              "type": "uint256"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 36,
+                                  "type": "struct SimpleStorage.User storage pointer",
+                                  "value": "u"
+                                },
+                                "id": 42,
+                                "name": "Identifier",
+                                "src": "481:1:0"
+                              }
+                            ],
+                            "id": 44,
+                            "name": "MemberAccess",
+                            "src": "481:8:0"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 21,
+                              "type": "uint256",
+                              "value": "x"
+                            },
+                            "id": 45,
+                            "name": "Identifier",
+                            "src": "492:1:0"
+                          }
+                        ],
+                        "id": 46,
+                        "name": "Assignment",
+                        "src": "481:12:0"
+                      }
+                    ],
+                    "id": 47,
+                    "name": "ExpressionStatement",
+                    "src": "481:12:0"
                   }
                 ],
-                "id": 77,
+                "id": 48,
                 "name": "Block",
-                "src": "172:28:1"
+                "src": "373:127:0"
               }
             ],
-            "id": 78,
+            "id": 49,
             "name": "FunctionDefinition",
-            "src": "130:70:1"
+            "src": "345:155:0"
+          },
+          {
+            "attributes": {
+              "constant": true,
+              "implemented": true,
+              "isConstructor": false,
+              "modifiers": [
+                null
+              ],
+              "name": "get",
+              "payable": false,
+              "scope": 66,
+              "stateMutability": "view",
+              "superFunction": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 50,
+                "name": "ParameterList",
+                "src": "518:2:0"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 65,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint",
+                          "type": "uint256"
+                        },
+                        "id": 51,
+                        "name": "ElementaryTypeName",
+                        "src": "542:4:0"
+                      }
+                    ],
+                    "id": 52,
+                    "name": "VariableDeclaration",
+                    "src": "542:4:0"
+                  }
+                ],
+                "id": 53,
+                "name": "ParameterList",
+                "src": "541:6:0"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "assignments": [
+                        55
+                      ]
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "constant": false,
+                          "name": "u",
+                          "scope": 65,
+                          "stateVariable": false,
+                          "storageLocation": "storage",
+                          "type": "struct SimpleStorage.User storage pointer",
+                          "value": null,
+                          "visibility": "internal"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "contractScope": null,
+                              "name": "User",
+                              "referencedDeclaration": 6,
+                              "type": "struct SimpleStorage.User storage pointer"
+                            },
+                            "id": 54,
+                            "name": "UserDefinedTypeName",
+                            "src": "558:4:0"
+                          }
+                        ],
+                        "id": 55,
+                        "name": "VariableDeclaration",
+                        "src": "558:14:0"
+                      },
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "type": "struct SimpleStorage.User storage ref"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 19,
+                              "type": "mapping(address => struct SimpleStorage.User storage ref)",
+                              "value": "users"
+                            },
+                            "id": 56,
+                            "name": "Identifier",
+                            "src": "575:5:0"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "member_name": "sender",
+                              "referencedDeclaration": null,
+                              "type": "address"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 78,
+                                  "type": "msg",
+                                  "value": "msg"
+                                },
+                                "id": 57,
+                                "name": "Identifier",
+                                "src": "581:3:0"
+                              }
+                            ],
+                            "id": 58,
+                            "name": "MemberAccess",
+                            "src": "581:10:0"
+                          }
+                        ],
+                        "id": 59,
+                        "name": "IndexAccess",
+                        "src": "575:17:0"
+                      }
+                    ],
+                    "id": 60,
+                    "name": "VariableDeclarationStatement",
+                    "src": "558:34:0"
+                  },
+                  {
+                    "attributes": {
+                      "functionReturnParameters": 53
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "member_name": "number",
+                          "referencedDeclaration": 5,
+                          "type": "uint256"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 55,
+                              "type": "struct SimpleStorage.User storage pointer",
+                              "value": "u"
+                            },
+                            "id": 61,
+                            "name": "Identifier",
+                            "src": "609:1:0"
+                          }
+                        ],
+                        "id": 62,
+                        "name": "MemberAccess",
+                        "src": "609:8:0"
+                      }
+                    ],
+                    "id": 63,
+                    "name": "Return",
+                    "src": "602:15:0"
+                  }
+                ],
+                "id": 64,
+                "name": "Block",
+                "src": "548:76:0"
+              }
+            ],
+            "id": 65,
+            "name": "FunctionDefinition",
+            "src": "506:118:0"
           }
         ],
-        "id": 79,
+        "id": 66,
         "name": "ContractDefinition",
-        "src": "26:176:1"
+        "src": "26:600:0"
       }
     ],
-    "id": 80,
+    "id": 67,
     "name": "SourceUnit",
-    "src": "0:203:1"
+    "src": "0:627:0"
   },
   "compiler": {
     "name": "solc",
@@ -340,9 +1475,9 @@
     "4447": {
       "events": {},
       "links": {},
-      "address": "0x345ca3e014aaf5dca488057592ee47305d9b3e10"
+      "address": "0xf25186b5081ff5ce73482ad761db0eb0d25abfbf"
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-04-03T18:37:21.656Z"
+  "updatedAt": "2018-04-04T02:43:49.161Z"
 }
