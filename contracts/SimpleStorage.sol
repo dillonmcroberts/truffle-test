@@ -5,6 +5,9 @@ contract SimpleStorage {
     struct User {
         address addr;
         uint number;
+        string firstName;
+        string lastName;
+        bool isManager;
         // Item[] ownedItems;
     }
 
@@ -12,6 +15,8 @@ contract SimpleStorage {
         uint itemId;
         string itemName;
         string itemType;
+        // don't know if we need this bool since 
+        // we will know what's checked out based on address
         bool checkedOut;
         bool trashed;
         address owner;
@@ -23,39 +28,30 @@ contract SimpleStorage {
     uint[] public itemIds;
 
     function SimpleStorage() public {
+        // constructor -- adds 3 static items to play around with
         addItem("accessory", "Magic Mouse 2");
         addItem("monitor", "Monitor 1");
         addItem("computer", "Macbook Pro 5");
     }
 
-    function addItem(string _itemName, string _itemType) public {
+    function addItem(string _itemType, string _itemName) public {
       // adds a new item into the system, not checked out, not 'trashed'
       // do we need an external AND internal ID for the item?
-        items[itemCounter] = Item(itemCounter, _itemName, _itemType, false, false, address(this));
+        items[itemCounter] = Item(itemCounter, _itemType, _itemName, false, false, address(this));
         itemIds.push(itemCounter);
         itemCounter++;
     }
 
     function checkOut(uint _itemId) public {
-        // Item storage item = items[_itemId];
         require(items[_itemId].owner == address(this));
         // function will return out if above statement evaluates to false
         items[_itemId].owner = msg.sender;
     }
 
-    function checkIn() public {
+    function checkIn(uint _itemId) public {
+        require(items[_itemId].owner == msg.sender);
+        // function will return out if transasction sender doesn't own this item
+        items[_itemId].owner = address(this);
 
-    }
-
-    function set(uint x) public {
-        users[msg.sender] = User(msg.sender, 0);
-    
-        User storage u = users[msg.sender];
-        u.number = x;
-    }
-
-    function get() public view returns (uint) {
-        User storage u = users[msg.sender];
-        return u.number;
     }
 }
